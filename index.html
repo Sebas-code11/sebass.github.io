@@ -1,7 +1,80 @@
-<html>
-  <head>
-    <title></title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi novia</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(imagenes/roji.avif);
+            overflow: hidden;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            cursor: pointer;
+        }
+
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .front {
+            background-color: #e25656; /* Fondo verde */
+            transform: rotateY(0deg);
+        }
+
+        .back {
+            background-color: #ffcccb; /* Fondo rosa pálido */
+            transform: rotateY(180deg);
+        }
+
+        .message {
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
+    <div class="card-container">
+        <div class="card" id="card" onclick="flipCard()">
+            <div class="front">
+                <div class="message" id="frontMessage">Para mi Princesa Hermosa &#128151;</></div>
+            </div>
+            <div class="back">
+                <div class="message" id="backMessage">Te amo tanto mi amor, siempre quiero que estes feliz amor:( quiero q estemos juntos siempre amor, te amo y este es un bonito regalo para ti<3 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var isFlipped = false;
+
+        function flipCard() {
+            var card = document.getElementById("card");
+            isFlipped = !isFlipped;
+            card.style.transform = isFlipped ? "rotateY(180deg)" : "rotateY(0deg)";
+        }
+    </script>
 </body>
 </html>
